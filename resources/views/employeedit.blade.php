@@ -5,7 +5,7 @@
         <div class="container-fluid">
           <!-- Page Header-->
           <header> 
-            <h1 class="h3 display">Students</h1>
+            <h1 class="h3 display">Compnay</h1>
           </header>
           <div class="row">
             <div class="col-lg-12">
@@ -14,32 +14,28 @@
                   <h4>Update</h4>
                 </div>
                 <div class="card-body">
-                  <form class="form-horizontal" enctype="multipart/form-data"  action="{{route('student.update',$student->id)}}" method="POST">
-                      @csrf  
-                      @method('PUT')                    
+                  <form class="form-horizontal" enctype="multipart/form-data"  action="{{route('employee.update',$employee->id)}}" method="POST">
+                    @csrf    
+                    @method('PUT')         
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Name</label>
                       <div class="col-sm-10">
-                        <input type="text" name="name" value="{{$student->name}}" class="form-control">
-                      </div>
-                    </div>
-                    <div class="line"></div>
-                    <div class="form-group row">
-                      <label class="col-sm-2 form-control-label">LastName</label>
-                      <div class="col-sm-10">
-                        <input type="text" name="lname" value="{{$student->lname}}" class="form-control" Placeholder="Enter LastName">
-                        <span style="color:red">
-                            @error('lname')
-                              {{$message}}
-                            @enderror  
-                        </span>
+                        <input type="text" name="fname" value="{{$employee->fname}}" class="form-control">
                       </div>
                     </div>
                     
+
+                    <div class="form-group row">
+                      <label class="col-sm-2 form-control-label">LastName</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="lname" value="{{$employee->lname}}" class="form-control">
+                      </div>
+                    </div>
+
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Email</label>
                       <div class="col-sm-10">
-                        <input type="text" name="email" value="{{$student->email}}" class="form-control" Placeholder="Enter Email">
+                        <input type="text" name="email" value="{{$employee->email}}" class="form-control" Placeholder="Enter Email">
                         <span style="color:red">
                             @error('email')
                               {{$message}}
@@ -47,24 +43,23 @@
                         </span>
                       </div>
                     </div>
-                     
+
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Mobile</label>
                       <div class="col-sm-10">
-                        <input type="text" name="mobile" value="{{$student->mobile}}" class="form-control" Placeholder="Enter Mobile">
-                        <span style="color:red">
-                            @error('mobile')
-                              {{$message}}
-                            @enderror 
-                        </span>
+                        <input type="text" name="mobile" id="mobile"  value="{{$employee->mobile}}" class="form-control">
                       </div>
                     </div>
                     
                     <div class="form-group row">
-                      <label class="col-sm-2 form-control-label">Profile</label>
-                      <div class="col-sm-10">
-                        <input type="file" name="image" id="image"  class="form-control">
-                        <img src="{{asset('images/'.$student->image)}}"   width="50px" height="50px">
+                      <label class="col-sm-2 form-control-label">Company</label>
+                      <div class="col-sm-10 mb-3">
+                        <select name="companie_id" class="form-control">
+                          <option>Select</option>                          
+                          @foreach($compnay as $value)
+                                <option value="{{$value->id}}" {{ $employee->id == $value->id   ? 'selected' : ''}} >{{$value->name}}</option>
+                            @endforeach
+                        </select>
                       </div>
                     </div>
                     

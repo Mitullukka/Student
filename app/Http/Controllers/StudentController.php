@@ -50,8 +50,19 @@ class StudentController extends Controller
             'lname'=>'required',
             'email'=>'required|unique:students',
             'mobile'=>'required',
+            'image'=>'required'
         ]);
-        Student::create($request->all());
+        $file = $request->file('image');
+        $name = $file->getClientOriginalName();
+        $file->move('images/',$name);
+        
+        $student = new Student;
+        $student->name=$request->name;
+        $student->lname=$request->lname;
+        $student->email=$request->email;
+        $student->mobile=$request->mobile;
+        $student->image=$name;
+        $student->save();
         return redirect()->route('student.index')->with('success',"Insert succesfully");
     }
 
@@ -88,7 +99,20 @@ class StudentController extends Controller
     public function update(Request $request, Student $student,$id)
     {
         $student = Student::find($id);
-        $student->update($request->all());
+        // $student->update($request->all());
+        
+        $destination = 'images/'.$student->image;
+        $file = $request->file('image');
+        $name = $file->getClientOriginalName();
+        $file->move('images/',$name);
+        
+        $student = new Student;
+        $student->name=$request->name;
+        $student->lname=$request->lname;
+        $student->email=$request->email;
+        $student->mobile=$request->mobile;
+        $student->image=$name;
+        $student->update();
         return redirect()->route('student.index')->with("update","Update succesfully");
     }
 
@@ -105,3 +129,5 @@ class StudentController extends Controller
         return redirect()->route('student.index')->with('delete',"Delete Sucessfully!");
     }
 }
+
+

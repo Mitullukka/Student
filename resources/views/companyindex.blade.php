@@ -5,21 +5,11 @@
         <div class="container-fluid">
           <!-- Page Header-->
           <header> 
-            <h1 class="h3 display">Student List</h1>
+            <h1 class="h3 display">Compnay List</h1>
           </header>
-          @if($message=Session::get('success'))
-                <div class="alert alert-success" class="close" id="success">
-                  {{$message}}
-                </div>  
-          @endif
-          @if($delete = Session::get('delete'))
-            <div class="alert alert-danger">
-              {{$delete}}
-            </div>
-          @endif
-          @if($update = Session::get('update'))
-          <div class="alert alert-primary">
-              {{$update}}
+          @if($message = Session::get('success'))
+            <div class="alert alert-success" class="close" id="success">
+                {{$message}}
             </div>
           @endif
           <div class="row">
@@ -27,45 +17,43 @@
               <div class="card">
                 <div class="card-header">
                   <h4>List</h4>                  
-                    <a href="{{route('student.create')}}" style="float:right"  class="btn btn-info">Add</a>
+                    <a href="{{route('companies.create')}}" style="float:right"  class="btn btn-success"><i class="fa fa-plus"></i> Create new company</a>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table table-striped table-hover">
                       <thead>
                         <tr>
-                          <!-- <th>#</th> -->
-                          <th>First Name</th>
-                          <th>Last Name</th>
+                          <th>#</th>
+                          <th>Name</th>
                           <th>Email</th>
-                          <th>Mobile</th>
-                          <th>Image</th>
+                          <th>Logo</th>
+                          <th>Website</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                          @foreach($student as $stu)
+                          @foreach($companie as $stu)
                         <tr>
-                            <!-- <th scope="row">{{$stu->id}}</th> -->
+                            <th scope="row">{{$stu->id}}</th>
                             <td>{{$stu->name}}</td>
-                            <td>{{$stu->lname}}</td>
                             <td>{{$stu->email}}</td>
-                            <td>{{$stu->mobile}}</td>
-                            <td><img src="{{asset('images/'.$stu->image)}}" width="30px" hwight="30px"></td>
+                            <td><img src="{{asset('uploads/'.$stu->logo)}}"  width="100px" height="100px"></td>
+                            <td>{{$stu->website}}</td>
                             <td>
-                              <form method="post" action="{{route('student.destroy',$stu->id)}}">
-                                <a href="{{route('student.edit',$stu->id)}}" class="btn btn-warning">Edit</a>
+                                <form method="POST" action="{{route('companies.destroy',$stu->id)}}">
+                                <a href="{{route('companies.edit',$stu->id)}}"   class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit"  class="btn btn-danger">Delete</button> 
-                              </form>
+                                
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         @endforeach
                        
                       </tbody>
                     </table>
-                   <div> {{ $student->links() }} </div>
+                   <div> {{ $companie->links('pagination::bootstrap-4') }} </div>
                   </div>
                 </div>
               </div>
@@ -77,6 +65,8 @@
 
      @push('js')
         <script type="text/javascript">
+
+
             $(document).ready(function(){
                 setTimeout(function(){
                   $("div.alert").remove();
