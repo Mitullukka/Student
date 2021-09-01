@@ -19,8 +19,8 @@
             <div class="col-xl-2 col-md-4 col-6">
               <div class="wrapper count-title d-flex">
                 <div class="icon"><i class="icon-user"></i></div>
-                <div class="name"><strong class="text-uppercase">Total User</strong><span>Last 7 days</span>
-                  <div class="count-number">25</div>
+                <div class="name"><strong class="text-uppercase">Total Student</strong><span></span>
+                  <div class="count-number">{{ \App\Models\Student::all()->count() }}</div>
                 </div>
               </div>
             </div>
@@ -28,8 +28,8 @@
             <div class="col-xl-2 col-md-4 col-6">
               <div class="wrapper count-title d-flex">
                 <div class="icon"><i class="icon-padnote"></i></div>
-                <div class="name"><strong class="text-uppercase">Work Orders</strong><span>Last 5 days</span>
-                  <div class="count-number">400</div>
+                <div class="name"><strong class="text-uppercase">Total Company</strong><span></span>
+                  <div class="count-number">{{ \App\Models\Companie::all()->count() }}</div>
                 </div>
               </div>
             </div>
@@ -37,8 +37,8 @@
             <div class="col-xl-2 col-md-4 col-6">
               <div class="wrapper count-title d-flex">
                 <div class="icon"><i class="icon-check"></i></div>
-                <div class="name"><strong class="text-uppercase">New Quotes</strong><span>Last 2 months</span>
-                  <div class="count-number">342</div>
+                <div class="name"><strong class="text-uppercase">New Employee</strong><span></span>
+                  <div class="count-number">{{ \App\Models\Employee::all()->count() }}</div>
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Companie;
 use Illuminate\Http\Request;
-
+use Session;
 class EmployeeController extends Controller
 {
     /**
@@ -17,7 +17,7 @@ class EmployeeController extends Controller
     {
         
         // $employee = Employee::with('companie')->get();
-        $employee = Employee::with('companie')->paginate(5);
+        $employee = Employee::with('companie')->orderBy('id','DESC')->paginate(5);
         return view('employeeindex',compact('employee'));
     }
 
@@ -41,8 +41,8 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'lname'=>'required',
+            'name'=>'required|min:3',
+            'lname'=>'required|min:3',
             'email'=>'required|email|unique:employees',
             'mobile'=>'required',
         ]);

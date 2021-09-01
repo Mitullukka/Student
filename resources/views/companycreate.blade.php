@@ -27,7 +27,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Name</label>
                       <div class="col-sm-10">
-                        <input type="text" name="name" id="name" class="form-control" Placeholder="Enter First Name">
+                        <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control" Placeholder="Enter First Name">
                        <span style="color:red">
                         @error('name')
                           {{$message}}
@@ -39,7 +39,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Email</label>
                       <div class="col-sm-10">
-                        <input type="text" name="email" id="email" class="form-control" Placeholder="Enter Email">
+                        <input type="text" name="email" id="email" value="{{old('email')}}" class="form-control" Placeholder="Enter Email">
                         <span style="color:red">
                         @error('email')
                             {{$message}}
@@ -62,7 +62,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Website</label>
                       <div class="col-sm-10">
-                        <input type="text" name="website" id="website"  class="form-control" Placeholder="Enter Website">
+                        <input type="text" name="website" id="website" value="{{old('website')}}"  class="form-control" Placeholder="Enter Website">
                         <span style="color:red">
                         @error('website')
                             {{$message}}
@@ -89,5 +89,43 @@
 @push('js')
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
+<script type="text/javascript">
+    $('#myform').validate({
+      rules:{
+        name:{
+          required:true
+        },
+        email:{
+          required:true,
+          email:true
+        },
+        logo:{
+          required:true
+        },
+        website:{
+          required:true
+        }
+      },
+      messages:{
+        name:{
+          required:"Please enter name"
+        },
+        email:{
+          required:"Please enter email" 
+        },
+        logo:{
+          required:"Please select logo"
+        },
+        website:{
+          required:"Please enter website url"
+        }
+      },
+      submitHandler:function(form)
+      {
+        submit.form();
+      }
+
+    });
+</script>
 
 @endpush

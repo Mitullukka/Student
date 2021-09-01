@@ -54,7 +54,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Company</label>
                       <div class="col-sm-10 mb-3">
-                        <select name="companie_id" class="form-control">
+                        <select name="companie_id" class="form-control" >
                           <option>Select</option>                          
                           @foreach($compnay as $value)
                                 <option value="{{$value->id}}" {{ $employee->id == $value->id   ? 'selected' : ''}} >{{$value->name}}</option>

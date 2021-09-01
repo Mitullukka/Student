@@ -33,7 +33,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                          @foreach($companie as $stu)
+                          @forelse($companie as $stu)
                         <tr>
                             <th scope="row">{{$stu->id}}</th>
                             <td>{{$stu->name}}</td>
@@ -48,8 +48,10 @@
                                 
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
                             </td>
+                            @empty
+                            <td>No data found</td>
                         </tr>
-                        @endforeach
+                        @endforelse
                        
                       </tbody>
                     </table>

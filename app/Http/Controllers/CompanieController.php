@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Companie;
+use App\Models\Employee;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
 class CompanieController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class CompanieController extends Controller
      */
     public function index()
     {
-         $companie = Companie::paginate(5);
+         $companie = Companie::orderBy('id','DESC')->paginate(5);
          return view('companyindex',compact('companie'));
     }
 
@@ -94,18 +95,27 @@ class CompanieController extends Controller
             //'logo'=>'required|mimes:jpeg,jpg,png',
             'website'=>'required'
         ]);
-       
-        $file = $request->file('logo');
-        $name = $file->getClientOriginalName();
-        $file->move('uploads/',$name);
-        
+    
         $companie = new Companie;
         $companie = Companie::find($request->id);
         $companie->name = $request->name;
         $companie->email = $request->email;
-        $companie->logo = $name;
+        // $companie->logo = $name;
         $companie->website = $request->website;
-        $companie->save();
+
+        if($request->hasFile('logo'))
+        {
+            $destination = 'uploads/'.$companie->logo;  
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('logo');
+            $name = $file->getClientOriginalName();
+            $file->move('uploads/',$name);
+            $companie->logo = $name;
+        }
+        $companie->update();
     
         return redirect()->route('companies.index')->with('success','Update Succesfully'); 
     }
@@ -118,8 +128,11 @@ class CompanieController extends Controller
      */
     public function destroy(Companie $companie,$id)
     {
+        Employee::where('companie_id',$id)->delete();
         $companie = Companie::find($id);
         $companie->delete();
         return redirect()->route('companies.index')->with('delete','Delete Succesfully');
     }
+
+   
 }

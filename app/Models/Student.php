@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Student extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-    protected $dates = ['deleted_at'];
+//     use SoftDeletes;
+//    //protected $dates = ['deleted_at'];
     // protected $table = ['students'];
     protected $fillable = [
         'name','lname','email','mobile','image'
     ];
 }
+    
