@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Companie;
 use Illuminate\Http\Request;
+use App\Http\Requests\Employee\StoreRequest;
+use App\Http\Requests\Employee\UpdateRequest;
 use Session;
 class EmployeeController extends Controller
 {
@@ -38,15 +40,8 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name'=>'required|min:3',
-            'lname'=>'required|min:3',
-            'email'=>'required|email|unique:employees',
-            'mobile'=>'required',
-        ]);
-
+    public function store(StoreRequest $request)
+    { 
         $employee = new Employee;
         $employee->fname = $request->name;
         $employee->lname = $request->lname;
@@ -78,7 +73,7 @@ class EmployeeController extends Controller
     public function edit(Employee $employee,$id)
     {
        $compnay = Companie::all();
-       $employee = Employee::find($id);
+       $employee = Employee::with('companie')->find($id);
        return view('employeedit',compact('compnay','employee'));
     }
 
@@ -89,7 +84,7 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(UpdateRequest $request, Employee $employee)
     {
         // $request->validate([
         //     'fname'=>'required',
