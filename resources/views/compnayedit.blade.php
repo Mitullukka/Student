@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Update')
+@section('title','CompnayUpdate')
 @section('content')
 <section class="forms">
         <div class="container-fluid">
@@ -60,8 +60,7 @@
                         </span>
                       </div>
                     </div>
-                    
-                    
+                
                     <div class="form-group row">
                       <div class="col-sm-4 offset-sm-2">
                         <button type="submit" class="btn btn-secondary">Cancel</button>

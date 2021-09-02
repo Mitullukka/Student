@@ -23,12 +23,30 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
+        
         $id = $this->id;
         return [
-                'name'=>'required|min:3',
-                'email'=>'required|unique:companies,email,'.$id,
-                //'logo'=>'required|mimes:jpeg,jpg,png',
-                'website'=>'required'
+            'name'=>'required|min:3|regex:/^\S*$/u',
+            'lname'=>'required|min:3|regex:/^S*$/u',
+            'email'=>'required|email|unique:employees',
+            'mobile'=>'required|numeric|min:10|max:12',
         ];
     }
+    
+    public function messages()
+    {
+        return [
+            'name.required'=>'Please enter name',
+            'name.regex'=>'Whitespace not allowed',
+            'lname.required'=>'Please enter last name',
+            'lname.regex'=>'Whitespace not allowed',
+            'email.required'=>'Please enter email',
+            'mobile.required'=>'Please enter mobile number',
+            'mobile.numeric'=>'The mobile must be a number.'
+        ];
+    } 
+
+   
 }
+
+

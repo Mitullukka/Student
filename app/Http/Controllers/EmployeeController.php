@@ -86,13 +86,6 @@ class EmployeeController extends Controller
      */
     public function update(UpdateRequest $request, Employee $employee)
     {
-        // $request->validate([
-        //     'fname'=>'required',
-        //     'lname'=>'required',
-        //     'email'=>'required|unique:employees,email,'.$request->id,
-        //     'mobile'=>'required',
-        // ]);
-
         $employee = new Employee;
         $employee = Employee::find($request->id);
         $employee->fname = $request->fname;
@@ -102,7 +95,7 @@ class EmployeeController extends Controller
         $employee->companie_id = $request->companie_id;
         $employee->save();
 
-        return redirect()->route('employee.index')->with('success','Update Succesfully');
+        return redirect()->route('employee.index')->with('success','Update Successfully');
     }
 
     /**
@@ -115,6 +108,6 @@ class EmployeeController extends Controller
     {
         $employee = Employee::find($id);
         $employee->delete();
-        return redirect()->route('employee.index')->with('delete',"Delete Succesfully");
+        return redirect()->route('employee.index')->with('delete',"Delete Successfully");
     }
 }

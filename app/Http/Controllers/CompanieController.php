@@ -6,6 +6,8 @@ use App\Models\Companie;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\Company\StoreRequest;
+use App\Http\Requests\Company\UpdateRequest;
 class CompanieController extends Controller
 {
     /**
@@ -35,15 +37,8 @@ class CompanieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $request->validate([
-            'name'=>'required|min:3',
-            'email'=>'required|email|unique:companies',
-            'logo'=>'required|mimes:jpeg,jpg,png',
-            'website'=>'required'
-        ]);
-
         $file = $request->file('logo');
         $name = $file->getClientOriginalName();
         $file->move('uploads/',$name);
@@ -87,7 +82,7 @@ class CompanieController extends Controller
      * @param  \App\Models\Companie  $companie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Companie $companie)
+    public function update(UpdateRequest $request,Companie $companie)
     {   
         
         $companie = new Companie;

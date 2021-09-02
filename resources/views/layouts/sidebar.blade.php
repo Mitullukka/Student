@@ -21,7 +21,7 @@
             <li><a href="{{route('dashboard')}}"> <i class="icon-home"></i>Dashboard</a></li>
             <li><a href="{{route('student.index')}}"> <i class="icon-form"></i>Student</a></li>
             <li><a href="{{route('companies.store')}}"> <i class="icon-form"></i>Compnay</a></li>
-            <li><a href="{{route('employee.store')}}"> <i class="icon-form"></i>Employee</a></li>
+            <li><a href="{{route('employee.store')}}"> <i class="icon-user"></i>Employee</a></li>
             <!-- <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="#">Page</a></li>

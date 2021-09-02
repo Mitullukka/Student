@@ -21,6 +21,11 @@
                       <label class="col-sm-2 form-control-label">Name</label>
                       <div class="col-sm-10">
                         <input type="text" name="fname" value="{{$employee->fname}}" class="form-control">
+                        <span style="color:red">
+                            @error('fname')
+                              {{$message}}
+                            @enderror 
+                        </span>
                       </div>
                     </div>
                     
@@ -29,6 +34,11 @@
                       <label class="col-sm-2 form-control-label">LastName</label>
                       <div class="col-sm-10">
                         <input type="text" name="lname" value="{{$employee->lname}}" class="form-control">
+                        <span style="color:red">
+                            @error('lname')
+                              {{$message}}
+                            @enderror 
+                        </span>
                       </div>
                     </div>
 
@@ -48,6 +58,11 @@
                       <label class="col-sm-2 form-control-label">Mobile</label>
                       <div class="col-sm-10">
                         <input type="text" name="mobile" id="mobile"  value="{{$employee->mobile}}" class="form-control">
+                        <span style="color:red">
+                            @error('mobile')
+                              {{$message}}
+                            @enderror 
+                        </span>
                       </div>
                     </div>
                     

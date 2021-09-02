@@ -89,43 +89,6 @@
 @push('js')
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
-<script type="text/javascript">
-    $('#myform').validate({
-      rules:{
-        name:{
-          required:true
-        },
-        email:{
-          required:true,
-          email:true
-        },
-        logo:{
-          required:true
-        },
-        website:{
-          required:true
-        }
-      },
-      messages:{
-        name:{
-          required:"Please enter name"
-        },
-        email:{
-          required:"Please enter email" 
-        },
-        logo:{
-          required:"Please select logo"
-        },
-        website:{
-          required:"Please enter website url"
-        }
-      },
-      submitHandler:function(form)
-      {
-        submit.form();
-      }
 
-    });
-</script>
 
 @endpush
