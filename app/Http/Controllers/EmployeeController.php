@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Employee\StoreRequest;
 use App\Http\Requests\Employee\UpdateRequest;
 use Session;
+
 class EmployeeController extends Controller
 {
     /**

@@ -23,21 +23,20 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        
         $id = $this->id;
         return [
-            'name'=>'required|min:3|regex:/^\S*$/u',
-            'lname'=>'required|min:3|regex:/^S*$/u',
-            'email'=>'required|email|unique:employees',
-            'mobile'=>'required|numeric|min:10|max:12',
+            'fname'=>'required|min:3|regex:/^\S*$/u',
+            'lname'=>'required|min:3|regex:/^\S*$/u',
+            'email'=>'required|unique:employees,email,'.$id,
+            'mobile'=>'required|numeric|unique:employees'
         ];
     }
-    
+
     public function messages()
     {
         return [
-            'name.required'=>'Please enter name',
-            'name.regex'=>'Whitespace not allowed',
+            'fname.required'=>'Please enter name',
+            'fname.regex'=>'Whitespace not allowed',
             'lname.required'=>'Please enter last name',
             'lname.regex'=>'Whitespace not allowed',
             'email.required'=>'Please enter email',

@@ -17,8 +17,8 @@ class CompanieController extends Controller
      */
     public function index()
     {
-         $companie = Companie::orderBy('id','DESC')->paginate(5);
-         return view('companyindex',compact('companie'));
+        $companie = Companie::orderBy('id','DESC')->paginate(5);
+        return view('companyindex',compact('companie'));
     }
 
     /**
@@ -84,12 +84,10 @@ class CompanieController extends Controller
      */
     public function update(UpdateRequest $request,Companie $companie)
     {   
-        
         $companie = new Companie;
         $companie = Companie::find($request->id);
         $companie->name = $request->name;
         $companie->email = $request->email;
-        // $companie->logo = $name;
         $companie->website = $request->website;
 
         if($request->hasFile('logo'))
@@ -105,7 +103,6 @@ class CompanieController extends Controller
             $companie->logo = $name;
         }
         $companie->update();
-    
         return redirect()->route('companies.index')->with('success','Update Succesfully'); 
     }
 

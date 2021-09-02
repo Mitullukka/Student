@@ -18,4 +18,11 @@ class Employee extends Model
     {
         return $this->belongsTo(Companie::class,'companie_id');
     }
+
+    //update name by Accessor 
+    public function getfnameAttribute($value)
+    {
+         return ucFirst($value);
+        //return "{$this->fname} {$this->lname}";
+    }
 }

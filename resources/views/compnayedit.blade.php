@@ -46,6 +46,11 @@
                       <div class="col-sm-10">
                         <input type="file" name="logo" id="logo"  class="form-control">
                         <img src="{{asset('uploads/'.$companie->logo)}}"   width="50px" height="50px">
+                        <span style="color:red">
+                            @error('logo')
+                              {{$message}}
+                            @enderror 
+                        </span>
                       </div>
                     </div>
 
@@ -54,7 +59,7 @@
                       <div class="col-sm-10">
                         <input type="text" name="website" value="{{$companie->website}}" class="form-control" Placeholder="Enter Mobile">
                         <span style="color:red">
-                            @error('mobile')
+                            @error('website')
                               {{$message}}
                             @enderror 
                         </span>

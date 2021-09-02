@@ -30,13 +30,15 @@
   <body>
     <!-- Side Navbar -->
     @include('layouts.sidebar');
+    <!-- End Side Navbar -->
+
     <div class="page">
-      <!-- navbar-->
-     @include('layouts.header');
-      <!-- Counts Section -->
-      @yield('content')
-      <!-- Header Section-->
-     @include('layouts.footer');
+    <!-- navbar-->
+    @include('layouts.header');
+    <!-- Counts Section -->
+    @yield('content')
+    <!-- Header Section-->
+    @include('layouts.footer');
     </div>
     <!-- JavaScript files-->
     <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>

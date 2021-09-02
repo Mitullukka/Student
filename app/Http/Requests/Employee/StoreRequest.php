@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Employee;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use App\Rules\Uppercase;
 class StoreRequest extends FormRequest
 {
     /**
@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'name'=>'required|min:3|regex:/^\S*$/u',
             'lname'=>'required|min:3|regex:/^S*$/u',
             'email'=>'required|email|unique:employees',
-            'mobile'=>'required|numeric|min:10|max:12',
+            'mobile'=>'required|numeric|unique:employees',
         ];
     }
     public function messages()

@@ -23,7 +23,8 @@
                 <div class="card-body">
                    
                   <form class="form-horizontal"  action="{{route('employee.store')}}" method="POST">
-                      @csrf                      
+                 
+                      @csrf
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">FirstName</label>
                       <div class="col-sm-10">
@@ -91,6 +92,7 @@
                       </div>
                     </div>
                   </form>
+                  <!-- {{Form::close()}} -->
                 </div>
               </div>
             </div>

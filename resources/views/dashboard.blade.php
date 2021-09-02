@@ -72,11 +72,7 @@
           </div>
         </div>
       </section>
-      <!-- Header Section-->
-
-      <!-- Statistics Section-->
      
-      <!-- Updates Section -->
    @endsection
      
     </div>

@@ -27,8 +27,19 @@ class UpdateRequest extends FormRequest
         return [
             'name'=>'required|min:3',
             'email'=>'required|unique:companies,email,'.$id,
-            'logo'=>'required|mimes:jpeg,jpg,png',
+            'logo'=>'nullable|mimes:jpeg,jpg,png',
             'website'=>'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required'=>'Please enter name',
+            'name.regex'=>'Whitespace not allowed',
+            'email.required'=>'Please enter email',
+            'logo.required'=>'Please select logo',
+            'logo.mimes'=>'Only jpeg,jpg,png allowed',
+            'website.required'=>'Please enter website'
         ];
     }
 }
