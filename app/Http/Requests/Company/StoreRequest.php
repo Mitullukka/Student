@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Uppercase;
 
 class StoreRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-                'name'=>'required|min:3|regex:/^\S*$/u',
+                'name'=>['required','min:3','regex:/^\S*$/u',new Uppercase],
                 'email'=>'required|email|unique:companies',
                 'logo'=>'required|mimes:jpeg,jpg,png',
                 'website'=>'required'

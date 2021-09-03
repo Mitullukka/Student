@@ -20,7 +20,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Name</label>
                       <div class="col-sm-10">
-                        <input type="text" name="name" value="{{$companie->name}}" class="form-control">
+                        <input type="text" name="name" value="{{old('name',$companie->name) }}" Placeholder="Please enter name" class="form-control">
                         <span style="color:red">
                             @error('name')
                               {{$message}}
@@ -32,7 +32,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Email</label>
                       <div class="col-sm-10">
-                        <input type="text" name="email" value="{{$companie->email}}" class="form-control" Placeholder="Enter Email">
+                        <input type="text" name="email" value="{{old('email',$companie->email)}}" Placeholder="Please enter email" class="form-control" Placeholder="Enter Email">
                         <span style="color:red">
                             @error('email')
                               {{$message}}
@@ -57,7 +57,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Website</label>
                       <div class="col-sm-10">
-                        <input type="text" name="website" value="{{$companie->website}}" class="form-control" Placeholder="Enter Mobile">
+                        <input type="text" name="website" value="{{old('website',$companie->website)}}" placeholder="Please enter website" class="form-control" Placeholder="Enter Mobile">
                         <span style="color:red">
                             @error('website')
                               {{$message}}

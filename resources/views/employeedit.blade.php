@@ -20,7 +20,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Name</label>
                       <div class="col-sm-10">
-                        <input type="text" name="fname" value="{{$employee->fname}}" class="form-control">
+                        <input type="text" name="fname" value="{{old('fname', $employee->fname)}}" class="form-control">
                         <span style="color:red">
                             @error('fname')
                               {{$message}}
@@ -33,7 +33,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">LastName</label>
                       <div class="col-sm-10">
-                        <input type="text" name="lname" value="{{$employee->lname}}" class="form-control">
+                        <input type="text" name="lname" value="{{old('lname',$employee->lname)}}" class="form-control">
                         <span style="color:red">
                             @error('lname')
                               {{$message}}
@@ -45,7 +45,8 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Email</label>
                       <div class="col-sm-10">
-                        <input type="text" name="email" value="{{$employee->email}}" class="form-control" Placeholder="Enter Email">
+                        <input type="text" name="email" value="{{old('email',$employee->email)}}" class="form-control" Placeholder="Enter Email">
+                        <!-- {{old('email') ?? $employee->email}} -->
                         <span style="color:red">
                             @error('email')
                               {{$message}}
@@ -57,7 +58,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Mobile</label>
                       <div class="col-sm-10">
-                        <input type="text" name="mobile" id="mobile"  value="{{$employee->mobile}}" class="form-control">
+                        <input type="text" name="mobile" id="mobile" placeholder="Enter Mobile" value="{{old('mobile',$employee->mobile) }}" class="form-control">
                         <span style="color:red">
                             @error('mobile')
                               {{$message}}

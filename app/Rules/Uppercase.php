@@ -36,6 +36,6 @@ class Uppercase implements Rule
      */
     public function message()
     {
-        return 'The Name error message.';
+        return 'The Name Must be capital.';
     }
 }

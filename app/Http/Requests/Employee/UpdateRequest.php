@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             'fname'=>'required|min:3|regex:/^\S*$/u',
             'lname'=>'required|min:3|regex:/^\S*$/u',
             'email'=>'required|unique:employees,email,'.$id,
-            'mobile'=>'required|numeric|unique:employees'
+            'mobile'=>'required|numeric|unique:employees,mobile,'.$id
         ];
     }
 
@@ -44,8 +44,5 @@ class UpdateRequest extends FormRequest
             'mobile.numeric'=>'The mobile must be a number.'
         ];
     } 
-
-   
 }
-
 
