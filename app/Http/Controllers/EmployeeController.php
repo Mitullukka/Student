@@ -20,10 +20,10 @@ class EmployeeController extends Controller
     public function index(EmployeesDataTable $datatable)
     {
         
-        //return $datatable->render('employeeindex');
+        return $datatable->render('employeeindex');
         // $employee = Employee::with('companie')->get();
-         $employee = Employee::with('companie')->orderBy('id','DESC')->paginate(5);
-         return view('employeeindex',compact('employee'));
+         //$employee = Employee::with('companie')->orderBy('id','DESC')->paginate(5);
+         //return view('employeeindex',compact('employee'));
     }
 
     /**

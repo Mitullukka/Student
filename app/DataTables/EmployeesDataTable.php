@@ -21,7 +21,20 @@ class EmployeesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'employees.action');
+            ->addColumn('action',function($data){
+              $btn = "";
+              $btn = '<a href="'.route('employee.edit',$data->id).'" class="edit btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>                   
+             <form action="'.route('employee.destroy',$data->id).'" method="POST">
+                '.csrf_field().'
+                '.method_field("DELETE").'
+                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm("Are you sure?")"><i class="fa fa-trash"></i></button>   
+              </form>';
+              return $btn;
+            })
+            ->editColumn('companie_id',function($data){
+                return $data->companie->name;
+            });  
+           
     }
 
     /**
@@ -46,7 +59,7 @@ class EmployeesDataTable extends DataTable
                     ->setTableId('employees-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
+                    ->dom('Blfrtip')
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create'),
@@ -65,19 +78,17 @@ class EmployeesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
             Column::make('id'),
             Column::make('fname'),
             Column::make('lname'),
-            Column::make('companie_id'),
+            Column::make('companie_id')->title('CompanyName'),
             Column::make('email'),
             Column::make('mobile'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::computed('action')
+            ->exportable(false)
+            ->printable(false)
+            ->width(60)
+            ->addClass('text-center'),
         ];
     }
 
