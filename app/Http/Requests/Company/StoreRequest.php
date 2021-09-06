@@ -26,9 +26,9 @@ class StoreRequest extends FormRequest
     {
         return [
                 'name'=>['required','min:3','regex:/^\S*$/u',new Uppercase],
-                'email'=>'required|email|unique:companies',
+                'email'=>'required|email|unique:companies,email,NULL,id,deleted_at,NULL',
                 'logo'=>'required|mimes:jpeg,jpg,png',
-                'website'=>'required'
+                'website'=>'required|regex:/^((www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)$/',
             ];
     }
     public function messages()
@@ -39,7 +39,7 @@ class StoreRequest extends FormRequest
                 'email.required'=>'Please enter email',
                 'logo.required'=>'Please select logo',
                 'logo.mimes'=>'Only jpeg,jpg,png allowed',
-                'website..required'=>'Please enter website'
+                'website.required'=>'Please enter website'
         ];
     }
 }

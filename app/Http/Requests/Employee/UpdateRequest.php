@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
         return [
             'fname'=>'required|min:3|regex:/^\S*$/u',
             'lname'=>'required|min:3|regex:/^\S*$/u',
-            'email'=>'required|unique:employees,email,'.$id,
+            'email'=>'required|unique:employees,email,'.$id.',id,deleted_at,NULL',
             'mobile'=>'required|numeric|unique:employees,mobile,'.$id
         ];
     }

@@ -24,7 +24,7 @@
                     <table class="table table-striped table-hover">
                       <thead>
                         <tr>
-                          <th>#</th>
+                          <!-- <th>#</th> -->
                           <th>Name</th>
                           <th>Email</th>
                           <th>Logo</th>
@@ -35,17 +35,17 @@
                       <tbody>
                           @forelse($companie as $stu)
                         <tr>
-                            <th scope="row">{{$stu->id}}</th>
+                            <!-- <th scope="row">{{$stu->id}}</th> -->
                             <td>{{$stu->name}}</td>
                             <td>{{$stu->email}}</td>
                             <td><img src="{{asset('uploads/'.$stu->logo)}}"  width="100px" height="100px"></td>
                             <td>{{$stu->website}}</td>
                             <td>
                                 <form method="POST" action="{{route('companies.destroy',$stu->id)}}">
+                                  
                                 <a href="{{route('companies.edit',$stu->id)}}"   class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                                 @csrf
-                                @method('DELETE')
-                                
+                                @method('DELETE')                                
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
                             </td>
                             @empty

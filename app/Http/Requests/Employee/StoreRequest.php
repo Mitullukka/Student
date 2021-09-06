@@ -25,8 +25,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'name'=>'required|min:3|regex:/^\S*$/u',
-            'lname'=>'required|min:3|regex:/^S*$/u',
-            'email'=>'required|email|unique:employees',
+            'lname'=>'required|min:3|regex:/^\S*$/u',
+            'email'=>'required|email|unique:employees,email,NULL,id,deleted_at,NULL',
             'mobile'=>'required|numeric|unique:employees',
         ];
     }

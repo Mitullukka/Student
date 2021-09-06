@@ -116,10 +116,8 @@ class CompanieController extends Controller
     public function destroy(Companie $companie,$id)
     {
         Employee::where('companie_id',$id)->delete();
-        $companie = Companie::find($id);
-        $companie->delete();
+        $companie = Companie::where('id',$id)->delete();
         return redirect()->route('companies.index')->with('delete','Delete Succesfully');
     }
-
-   
 }
+

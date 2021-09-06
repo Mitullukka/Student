@@ -7,6 +7,7 @@ use App\Models\Companie;
 use Illuminate\Http\Request;
 use App\Http\Requests\Employee\StoreRequest;
 use App\Http\Requests\Employee\UpdateRequest;
+use App\DataTables\EmployeesDataTable;
 use Session;
 
 class EmployeeController extends Controller
@@ -16,12 +17,13 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(EmployeesDataTable $datatable)
     {
         
+        //return $datatable->render('employeeindex');
         // $employee = Employee::with('companie')->get();
-        $employee = Employee::with('companie')->orderBy('id','DESC')->paginate(5);
-        return view('employeeindex',compact('employee'));
+         $employee = Employee::with('companie')->orderBy('id','DESC')->paginate(5);
+         return view('employeeindex',compact('employee'));
     }
 
     /**

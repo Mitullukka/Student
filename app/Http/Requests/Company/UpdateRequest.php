@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
         $id = $this->id;
         return [
             'name'=>'required|min:3',
-            'email'=>'required|unique:companies,email,'.$id,
+            'email'=>'required|unique:companies,email,'.$id.',id,deleted_at,NULL',
             'logo'=>'nullable|mimes:jpeg,jpg,png',
             'website'=>'required'
         ];

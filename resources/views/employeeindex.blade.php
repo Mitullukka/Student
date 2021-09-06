@@ -59,12 +59,9 @@
                             @empty
                              <td colspan="7" style="text-align:center">No data found</td>
                         </tr>
-                        
                         @endforelse
-                      
                       </tbody>
                     </table>
-                   
                    <div> {{$employee->links('pagination::bootstrap-4')}}  </div>
                   </div>
                 </div>
