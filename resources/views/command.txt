@@ -1,0 +1,36 @@
+Config and cache clear
+php artisan config:cache
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+php artisan view:cache
+
+Migration 
+
+php artisan make:migration create_tablename_table
+php artisan make:migration create_tablename_table -m (With Model)
+
+php artisan schema:dump (migrations into a single SQL file. )
+php artisan migrate:rollback 
+php artisan migrate:rollback --step 1
+php artisan migrate:fresh - delete all records into table
+php artisan migrate:status - show all migrate table with batch 
+php artisan migrate:reset - drop or delete all migration table
+php artisan migrate:rollback - last migrated table rollback specific migration
+php artisan migrate:rollback --step 2 - rollback last 2 migration 
+php artisan migrate:refresh  - all migrated table rollback and after refresh 
+
+composer require doctrine/dbal (for rename column)
+
+
+$table->foreginId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade')
+
+
+Seeder
+------------
+php artisan make:seeder UserSeeder
+php artisan db:seed
+php artisan db:seed --class=UserSeeder
+
+

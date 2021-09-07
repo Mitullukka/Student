@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Requests\Company\StoreRequest;
 use App\Http\Requests\Company\UpdateRequest;
 use App\Rules\Uppercase;
+use App\DataTables\CompanieDataTable;
 class CompanieController extends Controller
 {
     /**
@@ -16,10 +17,11 @@ class CompanieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CompanieDataTable $datatable)
     {
-        $companie = Companie::orderBy('id','DESC')->paginate(5);
-        return view('companyindex',compact('companie'));
+        return $datatable->render('companyindex');
+        //$companie = Companie::orderBy('id','DESC')->paginate(5);
+        //return view('companyindex',compact('companie'));
     }
 
     /**

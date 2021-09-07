@@ -74,6 +74,21 @@
                     </div>
 
                     <div class="form-group row">
+                      <label class="col-sm-2 form-control-label">Gender<br></label>
+                      <div class="col-sm-10">
+                       
+                        <div>
+                          <input id="optionsRadios1" type="radio" checked="" value="1" name="gender">
+                          <label for="optionsRadios1">Male</label>
+                        </div>
+                        <div>
+                          <input id="optionsRadios2" type="radio" value="2" name="gender">
+                          <label for="optionsRadios2">Female</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Company</label>
                       <div class="col-sm-10 mb-3">
                         <select name="companie_id" class="form-control">

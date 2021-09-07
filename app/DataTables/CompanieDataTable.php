@@ -2,14 +2,14 @@
 
 namespace App\DataTables;
 
-use App\Models\Employee;
+use App\Models\Companie;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class EmployeesDataTable extends DataTable
+class CompanieDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,40 +21,30 @@ class EmployeesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action',function($data){
-              $btn = "";
-              $btn = '<a href="'.route('employee.edit',$data->id).'" class="edit btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>                   
-             <form action="'.route('employee.destroy',$data->id).'" method="POST" style="display:inline-block">
+            ->addColumn('action', function($data){
+                $btn = "";
+                $btn = '<a href="'.route('companies.edit',$data->id).'" class="edit btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
+                <form method="POST" style="display:inline-block" action="'.route('companies.destroy',$data->id).'">
                 '.csrf_field().'
-                '.method_field("DELETE").'
-                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm("Are you sure?")"><i class="fa fa-trash"></i></button>   
-              </form>';
-              return $btn;
+                '.method_field('DELETE').'
+                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                </form>';
+                return $btn;
+            })->addColumn('logo',function($data){            
+                $url = asset('uploads/'.$data->logo);               
+                return '<img src="'.$url.'" width="100px" height="100px">';
             })
-            ->editColumn('companie_id',function($data){
-                return $data->companie->name;
-            })
-            ->editColumn('gender',function($data){
-                if($data->gender == 1)
-                {
-                   return '<span class="badge badge-warning">Male</span>';
-                }
-                if($data->gender == 2){
-                   return '<span class="badge badge-info">Female</span>';
-                }
-            })
-            ->rawColumns(['action','gender'])
-            ->addIndexColumn();  
-           
-    }
-
+            ->rawColumns(['action','logo'])
+            ->addIndexColumn();
+    }   
+    
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Employee $model
+     * @param \App\Models\Companie $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Employee $model)
+    public function query(Companie $model)
     {
         return $model->newQuery();
     }
@@ -67,7 +57,7 @@ class EmployeesDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('employees-table')
+                    ->setTableId('companie-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Blfrtip')
@@ -89,14 +79,13 @@ class EmployeesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('No')->data('DT_RowIndex')->searchable(false)->orderable(false),
+            Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
             Column::make('id')->hidden(true),
-            Column::make('fname'),
-            Column::make('lname'),
-            Column::make('companie_id')->title('CompanyName'),
+            Column::make('name'),
             Column::make('email'),
-            Column::make('mobile'),
-            Column::make('gender'),
+            Column::make('logo'),
+            Column::make('website'),
+            
             Column::computed('action')
             ->exportable(false)
             ->printable(false)
@@ -112,6 +101,6 @@ class EmployeesDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Employees_' . date('YmdHis');
+        return 'Companie_' . date('YmdHis');
     }
 }

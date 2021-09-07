@@ -50,6 +50,7 @@ class EmployeeController extends Controller
         $employee->lname = $request->lname;
         $employee->email = $request->email;
         $employee->mobile = $request->mobile;
+        $employee->gender = $request->gender;
         $employee->companie_id = $request->companie_id;
         $employee->save();
 
