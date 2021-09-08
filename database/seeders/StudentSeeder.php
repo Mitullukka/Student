@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 class StudentSeeder extends Seeder
 {
     /**
@@ -14,11 +15,12 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
         DB::table('students')->insert([
-            'name' => Str::random(10),
-            'lname' => Str::random(10),
-            'email' => Str::random(10),
-            'mobile' => Str::random(10)
+            'name'   =>  $faker->name(),
+            'lname'  =>  $faker->name(),
+            'email'  =>  $faker->unique()->safeEmail(),
+            'mobile' =>  $faker->numerify('##########')
         ]);
     }
 }

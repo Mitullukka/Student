@@ -33,4 +33,7 @@ php artisan make:seeder UserSeeder
 php artisan db:seed
 php artisan db:seed --class=UserSeeder
 
+Factory
+-----------
 
+php artisan make:factory StudentFactory  

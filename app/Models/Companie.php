@@ -11,6 +11,7 @@ class Companie extends Model
 {
     use HasFactory;
     use softDeletes;
+   
     protected $dates = ['deleted_at'];
     // protected $table = ['companies'];
     protected $fillable = [

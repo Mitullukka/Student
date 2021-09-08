@@ -66,7 +66,20 @@
                         </span>
                       </div>
                     </div>
-                    
+                    <div class="form-group row">
+                      <label class="col-sm-2 form-control-label">Gender<br></label>
+                      <div class="col-sm-10">
+                        <div>
+                          <input id="optionsRadios1" type="radio"  value="1" {{ $employee->gender == '1' ? 'checked' : ''}} name="gender">
+                          <label for="optionsRadios1">Male</label>
+                        </div>
+                        <div>
+                          <input id="optionsRadios2" type="radio"  value="2" {{ $employee->gender == '2' ? 'checked' : ''}} name="gender">
+                          <label for="optionsRadios2">Female</label>
+                        </div>
+                      </div>
+                    </div>
+                     
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Company</label>
                       <div class="col-sm-10 mb-3">
